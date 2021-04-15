@@ -10,13 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+import com.spring.server.config.AppProperties;
 import com.spring.server.model.Category;
 import com.spring.server.model.Product;
 import com.spring.server.repository.CategoryRepository;
 import com.spring.server.repository.ProductRepository;
 
 @SpringBootApplication
+@EnableConfigurationProperties(AppProperties.class)
 public class ServerApplication implements CommandLineRunner{
 	
 	@Autowired
