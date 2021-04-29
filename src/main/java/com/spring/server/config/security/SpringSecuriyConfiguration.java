@@ -86,6 +86,7 @@ public class SpringSecuriyConfiguration extends WebSecurityConfigurerAdapter{
 			.formLogin().disable()
 			.httpBasic().disable()
 			.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint()).and()
+			
 			.authorizeRequests()
 				.antMatchers(
 						"/auth/**",
@@ -108,7 +109,6 @@ public class SpringSecuriyConfiguration extends WebSecurityConfigurerAdapter{
 			.and()
 			.successHandler(oAuth2AuthenticationSuccessHandler)
 			.failureHandler(oAuth2AuthenticationFailureHandler);
-		
 		
 		http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 			

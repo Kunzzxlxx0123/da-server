@@ -26,7 +26,7 @@ public class TokenProvider {
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + appProperties.getAuth().getTokenExpirationMsec());
-
+        System.out.println(appProperties.getAuth().getTokenSecret());
         return Jwts.builder()
                 .setSubject(Long.toString(userPrincipal.getId()))
                 .setIssuedAt(new Date())
@@ -46,6 +46,7 @@ public class TokenProvider {
 
     public boolean validateToken(String authToken) {
         try {
+        	System.out.println(appProperties.getAuth().getTokenSecret());
             Jwts.parser().setSigningKey(appProperties.getAuth().getTokenSecret()).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException ex) {

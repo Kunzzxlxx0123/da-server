@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.server.model.Category;
 import com.spring.server.repository.CategoryRepository;
 
+import io.jsonwebtoken.Jwts;
+
 
 public class Test {
 
@@ -54,5 +56,15 @@ public class Test {
 //		
 //		System.out.println(listTree);
 		
+		//Test verityToken
+		String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNjE4NTQ2Mjk2LCJleHAiOjE2MTk0MTAyOTZ9.aBwM4e8dY6LVbOKjUbTkwvE4A3Dzq9BZRt-PH6hnnoMs0RQHNemZsAZ-rog0gaVeQT-0HT5TmAMkJ2KZG6Sfxg";
+		String secret = "926D96C90030DD58429D2751AC1BDBBC";
+		
+		try {
+			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+			System.out.println("success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
